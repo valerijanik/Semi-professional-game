@@ -4,8 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-//Author: Valerija Nikulina
-
 namespace warhammer
 {
     public class AuthenticationManager : MonoBehaviourPunCallbacks
