@@ -1,0 +1,459 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using System;
+
+//Author: Valerija Nikulina
+
+public class MainMenu : MonoBehaviour
+{
+    //starting the game
+    //public GameObject startingLogoScreen;
+    //public GameObject logInScreen;
+    //public GameObject LoadingScreen;
+    public GameObject mainMenu;
+    public GameObject elementsAlwaysOnTop;
+
+    #region Closing news and follow us on main menu
+    public GameObject ourNews;
+    public GameObject followUs;
+    #endregion
+
+    #region Play Sequence GameObjects
+    public GameObject playSequence;
+    public GameObject serversScreen;
+    public GameObject chooseCharacter;
+    public GameObject characterDescriptionImperial;
+    public GameObject characterDescriptionChaos;
+    public GameObject chooseWeaponImperial;
+    public GameObject chooseWeaponChaos;
+    #endregion
+
+    #region Inventory GameObjects
+    public GameObject inventorySequence;
+    public GameObject inventoryMain;
+    public GameObject inventoryArmor;
+    public GameObject inventoryWeapons;
+    #endregion
+
+    #region Store GameObjects
+    public GameObject storeSequence;
+    public GameObject storeMain;
+    public GameObject storeResourses;
+    #endregion
+
+    #region Learn GameObjects
+    public GameObject learnSequence;
+    public GameObject learnMain;
+    public GameObject learnCharactersList;
+    public GameObject learnCharactersDescription;
+    public GameObject learnCharactersCustomisation;
+    public GameObject learnWeaponsList;
+    public GameObject learnWeaponsDescription;
+    #endregion
+
+    #region Characters Customisation GameObjects
+    public GameObject hairColorSettings;
+    public GameObject skinColorSettings;
+    #endregion
+
+    #region Profile GameObjects
+    public GameObject profileSequence;
+    public GameObject profileMain;
+    public GameObject profileSettings;
+    #endregion
+
+    #region Settings PopUp GameObjects
+    //bool SettingsPopUp = false;
+
+    public GameObject settingsPopUp2;
+    /*public GameObject optionsButton;
+    public GameObject hotKeysButton;
+    public GameObject creditsButton;
+    public GameObject exitButton;*/
+    #endregion
+
+    #region Options GameObjects
+    public GameObject optionsSequence;
+    public GameObject optionsDisplay;
+    public GameObject optionSystem;
+    public GameObject optionsSound;
+    public GameObject optionsAccount;
+    public GameObject optionsInput;
+    public GameObject optionsHotKeys;
+    #endregion
+
+    void Start()
+    {
+        mainMenu.SetActive(true);
+        elementsAlwaysOnTop.SetActive(true);
+        ourNews.SetActive(true);
+        followUs.SetActive(true);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            settingsPopUp2.SetActive(true);
+        }
+    }
+
+    #region Logo - to main menu
+    public void ToMainMenu()
+    {
+        mainMenu.SetActive(true);
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        storeSequence.SetActive(false);
+        learnSequence.SetActive(false);
+        ourNews.SetActive(true);
+        followUs.SetActive(true);
+        optionsSequence.SetActive(false);
+    }
+    #endregion
+
+    ///to add an arrow to open them back
+    #region Closing news and follow us on main menu
+    public void CloseNews()
+    {
+        ourNews.SetActive(false);
+    }
+    public void CloseFollowUs()
+    {
+        followUs.SetActive(false);
+    }
+    #endregion
+
+    #region Play Button Sequence
+    public void PlayButton()
+    {
+        serversScreen.SetActive(true);
+        playSequence.SetActive(true);
+        storeSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        chooseCharacter.SetActive(false);
+        characterDescriptionChaos.SetActive(false);
+        characterDescriptionImperial.SetActive(false);
+        chooseWeaponChaos.SetActive(false);
+        chooseWeaponImperial.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        optionsSequence.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+    public void ConnectButton()
+    {
+        chooseCharacter.SetActive(true);
+        serversScreen.SetActive(false);
+    }
+    public void BackToServers()
+    {
+        chooseCharacter.SetActive(false);
+        serversScreen.SetActive(true);
+    }
+    public void CharacterDescriptionImperial()
+    {
+        characterDescriptionImperial.SetActive(true);
+        chooseCharacter.SetActive(false);
+    }
+    public void CharacterDescriptionChaos()
+    {
+        characterDescriptionChaos.SetActive(true);
+        chooseCharacter.SetActive(false);
+    }
+    public void BackToCharacters()
+    {
+        chooseCharacter.SetActive(true);
+        characterDescriptionChaos.SetActive(false);
+        characterDescriptionImperial.SetActive(false);
+        chooseWeaponChaos.SetActive(false);
+        chooseWeaponImperial.SetActive(false);
+    }
+    public void ChooseWeaponChaos()
+    {
+        chooseWeaponChaos.SetActive(true);
+        characterDescriptionChaos.SetActive(false);
+        characterDescriptionImperial.SetActive(false);
+    }
+    public void ChooseWeaponImperial()
+    {
+        chooseWeaponImperial.SetActive(true);
+        characterDescriptionChaos.SetActive(false);
+        characterDescriptionImperial.SetActive(false);
+    }
+    #endregion
+
+    #region Inventory sequence
+    public void OpenInventory()
+    {
+        //here disable everything
+        inventorySequence.SetActive(true);
+        inventoryMain.SetActive(true);
+        storeSequence.SetActive(false);
+        learnSequence.SetActive(false);
+        playSequence.SetActive(false);
+        inventoryArmor.SetActive(false);
+        inventoryWeapons.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        optionsSequence.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+
+    public void InventoryArmor()
+    {
+        inventoryMain.SetActive(false);
+        inventoryWeapons.SetActive(false);
+        inventoryArmor.SetActive(true);
+    }
+
+    public void InventoryWeapons()
+    {
+        inventoryMain.SetActive(false);
+        inventoryArmor.SetActive(false);
+        inventoryWeapons.SetActive(true);
+    }
+
+    public void BackToInventoryMain()
+    {
+        inventoryArmor.SetActive(false);
+        inventoryWeapons.SetActive(false);
+        inventoryMain.SetActive(true);
+    }
+    #endregion
+
+    #region Store sequence
+    public void StoreButton()
+    {
+        storeSequence.SetActive(true);
+        storeMain.SetActive(true);
+        mainMenu.SetActive(false);
+        storeResourses.SetActive(false);
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        optionsSequence.SetActive(false);
+    }
+    public void RecoursesButton()
+    {
+        storeSequence.SetActive(true);
+        storeResourses.SetActive(true);
+        mainMenu.SetActive(false);
+        storeMain.SetActive(false);
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+    }
+    #endregion
+
+    #region Learn sequence
+    public void LearnButton()
+    {
+        learnMain.SetActive(true);
+        learnSequence.SetActive(true);
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        storeSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        learnCharactersList.SetActive(false);
+        learnCharactersDescription.SetActive(false);
+        learnCharactersCustomisation.SetActive(false);
+        learnWeaponsList.SetActive(false);
+        learnWeaponsDescription.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        optionsSequence.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+    public void LearnCharactersButton()
+    {
+        learnMain.SetActive(false);
+        learnCharactersList.SetActive(true);
+        learnWeaponsList.SetActive(false);
+        learnWeaponsDescription.SetActive(false);
+    }
+    public void LearnCharactersDescriptionOpen()
+    {
+        learnCharactersList.SetActive(false);
+        learnCharactersDescription.SetActive(true);
+    }
+    public void LearnCharactersCustomisationButton()
+    {
+        learnCharactersList.SetActive(false);
+        learnCharactersDescription.SetActive(false);
+        learnCharactersCustomisation.SetActive(true);
+    }
+    public void LearnCharactersCustomisationBackToCharactersButton()
+    {
+        learnCharactersCustomisation.SetActive(false);
+        learnCharactersList.SetActive(true);
+    }
+    public void LearnWeaponsButton()
+    {
+        learnMain.SetActive(false);
+        learnWeaponsList.SetActive(true);
+        learnCharactersCustomisation.SetActive(false);
+        learnCharactersDescription.SetActive(false);
+        learnCharactersList.SetActive(false);
+    }
+    public void LearnWeaponsDescription()
+    {
+        learnWeaponsDescription.SetActive(true);
+        learnWeaponsList.SetActive(false);
+    }
+    public void LearnWeaponsDescriptionBackButton()
+    {
+        learnWeaponsDescription.SetActive(false);
+        learnWeaponsList.SetActive(true);
+    }
+
+    #endregion
+
+    #region Character Customisation
+    public void HairColorCustomisation()
+    {
+        hairColorSettings.SetActive(true);
+        skinColorSettings.SetActive(false);
+    }
+    public void SkinColorCustomisation()
+    {
+        skinColorSettings.SetActive(true);
+        hairColorSettings.SetActive(false);
+    }
+    public void CharacterCustomisationDoneButton()
+    {
+        skinColorSettings.SetActive(false);
+        hairColorSettings.SetActive(false);
+    }
+    #endregion
+
+    #region Profile sequence
+    public void ProfileButton()
+    {
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        storeSequence.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(true);
+        profileMain.SetActive(true);
+        profileSettings.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        optionsSequence.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+    public void ProfileSettings()
+    {
+        profileMain.SetActive(false);
+        profileSettings.SetActive(true);
+    }
+    #endregion
+
+    //to make the popup disappear after click anywhere else except it
+    #region Settings PopUp
+    public void SettingsPopUp2()
+    {
+        settingsPopUp2.SetActive(true);
+    }
+
+    void EscButton()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            settingsPopUp2.SetActive(true);
+        }
+    }
+        #endregion
+
+    #region Options Sequence
+        public void OptionsButtonOpen()
+    {
+        optionsSequence.SetActive(true);
+        optionsDisplay.SetActive(true);
+        optionsSound.SetActive(false);
+        optionSystem.SetActive(false);
+        optionsAccount.SetActive(false);
+        optionsInput.SetActive(false);
+        optionsHotKeys.SetActive(false);
+        ourNews.SetActive(false);
+        followUs.SetActive(false);
+        storeSequence.SetActive(false);
+        playSequence.SetActive(false);
+        inventorySequence.SetActive(false);
+        storeSequence.SetActive(false);
+        learnSequence.SetActive(false);
+        profileSequence.SetActive(false);
+        mainMenu.SetActive(false);
+    }
+    public void HotKeysButtonOpen()
+    {
+        optionsHotKeys.SetActive(true);
+        optionsDisplay.SetActive(false);
+        optionsSound.SetActive(false);
+        optionSystem.SetActive(false);
+        optionsAccount.SetActive(false);
+        optionsInput.SetActive(false);
+        ourNews.SetActive(false);
+        storeSequence.SetActive(false);
+        followUs.SetActive(false);
+    }
+    public void OptionsSystemOpen()
+    {
+        optionsDisplay.SetActive(false);
+        optionsSound.SetActive(false);
+        optionSystem.SetActive(true);
+        optionsAccount.SetActive(false);
+        optionsInput.SetActive(false);
+        optionsHotKeys.SetActive(false);
+        storeSequence.SetActive(false);
+    }
+    public void OptionsSoundOpen()
+    {
+        optionsDisplay.SetActive(false);
+        optionsSound.SetActive(true);
+        optionSystem.SetActive(false);
+        optionsAccount.SetActive(false);
+        optionsInput.SetActive(false);
+        optionsHotKeys.SetActive(false);
+        storeSequence.SetActive(false);
+    }
+    public void OptionsAccountOpen()
+    {
+        optionsDisplay.SetActive(false);
+        optionsSound.SetActive(false);
+        optionSystem.SetActive(false);
+        optionsAccount.SetActive(true);
+        optionsInput.SetActive(false);
+        optionsHotKeys.SetActive(false);
+        storeSequence.SetActive(false);
+    }
+    public void OptionsInputOpen()
+    {
+        optionsDisplay.SetActive(false);
+        optionsSound.SetActive(false);
+        optionSystem.SetActive(false);
+        optionsAccount.SetActive(false);
+        optionsInput.SetActive(true);
+        optionsHotKeys.SetActive(false);
+        storeSequence.SetActive(false);
+    }
+    #endregion
+
+    public void ExitGame()
+    {
+        Application.Quit();
+        Debug.Log("exiting the game");
+    }
+}
