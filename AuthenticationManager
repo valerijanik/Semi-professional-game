@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+
+//Author: Valerija Nikulina
+
+namespace warhammer
+{
+    public class AuthenticationManager : MonoBehaviourPunCallbacks
+    {
+
+        #region Private Fields
+        [SerializeField]
+        private string username, password, gameversion;
+        #endregion
+
+        #region Public Methods
+        // Start is called before the first frame update
+        void Start()
+        {
+            login();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+        #endregion
+
+        #region private methods
+
+        private void login()
+        {
+            AuthenticationValues authValues = new AuthenticationValues();
+            authValues.AuthType = CustomAuthenticationType.Custom;
+            authValues.AddAuthParameter("username", username);
+            authValues.AddAuthParameter("password", password);
+            authValues.AddAuthParameter("gameVersion", gameversion);
+            PhotonNetwork.AuthValues = authValues;
+            PhotonNetwork.ConnectUsingSettings();
+        }
+
+        #endregion
+    }
+}
